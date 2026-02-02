@@ -78,7 +78,7 @@ Inspired by production voice bot patterns:
 ### 1. Create Virtual Environment
 
 ```bash
-cd voice-bot-task
+cd Qualifier-voice-bot
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
@@ -113,11 +113,11 @@ BOT_TYPE=home_renovation
 
 ```bash
 # Using environment variable
-python main.py start
+python main.py console
 
 # Or with command line argument
-python main.py start --bot-type home_renovation
-python main.py start --bot-type loan_qualifier
+python main.py console --bot-type home_renovation
+python main.py console --bot-type loan_qualifier
 ```
 
 ### Development Mode
@@ -130,7 +130,7 @@ python main.py dev
 
 ### LLM-Driven Conversation
 
-The bot uses OpenAI GPT-4o-mini to handle the entire conversation flow. A system prompt is dynamically built from the YAML configuration, instructing the LLM to:
+The bot uses OpenAI GPT-4.1 to handle the entire conversation flow. A system prompt is dynamically built from the YAML configuration, instructing the LLM to:
 
 1. Greet the caller
 2. Ask qualification questions one at a time
@@ -208,7 +208,7 @@ Update in `bots.yaml`:
 ```yaml
 llm:
   provider: "openai"
-  model: "gpt-4o-mini"
+  model: "gpt-4.1"
   temperature: 0.2
 ```
 

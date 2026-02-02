@@ -1,0 +1,96 @@
+# Bot configurations for voice bot lead qualifiers
+# No LLM - uses hardcoded logic flows
+
+bots:
+  home_renovation:
+    company_name: "Home Renovation Company"
+    greeting: |
+      Hello! Thank you for calling our home renovation company.
+      I'm here to help you with a few quick questions to better assist you.
+      This will only take a minute.
+
+    questions:
+      - text: "First question: Do you own your home?"
+        key: "owns_home"
+      - text: "Second question: Is your budget over 10,000 dollars?"
+        key: "budget_over_10k"
+      - text: "Final question: Are you looking to start your renovation within 3 months?"
+        key: "start_within_3_months"
+
+    success_message: |
+      Excellent! Based on your responses, you're a perfect match for our services.
+      I'm classifying you as a hot lead and will transfer you to one of our
+      renovation specialists right away. Please hold while I connect you.
+
+    failure_message: |
+      Thank you for your interest in our home renovation services.
+      We'll keep your information on file, and feel free to reach out
+      when your situation changes. Have a great day!
+
+    clarification_message: "I didn't quite catch that. Could you please answer with yes or no?"
+
+    result_labels:
+      success: "Hot Lead"
+      failure: "Not Qualified"
+
+    stt:
+      model: "nova-2"
+      language: "en-US"
+      endpointing_ms: 300
+
+    tts:
+      voice_id: "xctasy8XvGp2cVO9HL9k"  
+      model: "eleven_turbo_v2_5"
+
+    llm:
+      provider: "openai"
+      model: "gpt-4.1"
+      temperature: 0.2
+
+  loan_qualifier:
+    company_name: "QuickRupee"
+    greeting: |
+      Hello! Thank you for calling QuickRupee.
+      I'm here to help you check your eligibility for a personal loan.
+      I'll ask you three quick questions to determine if you qualify.
+      Let's get started.
+
+    questions:
+      - text: "First question: Are you currently a salaried employee?"
+        key: "is_salaried"
+      - text: "Second question: Is your monthly in-hand salary above 25,000 rupees?"
+        key: "salary_above_25k"
+      - text: "Final question: Do you reside in a metro city such as Delhi, Mumbai, or Bangalore?"
+        key: "in_metro_city"
+
+    success_message: |
+      Congratulations! Based on your responses, you meet our eligibility criteria.
+      You have been marked as eligible for a personal loan from QuickRupee.
+      One of our loan officers will call you back within 10 minutes to proceed with your application.
+      Thank you for choosing QuickRupee!
+
+    failure_message: |
+      Thank you for your interest in QuickRupee.
+      Unfortunately, based on your responses, you do not meet our current eligibility criteria.
+      We appreciate you reaching out, and we encourage you to apply again
+      when your circumstances change. Have a great day!
+
+    clarification_message: "I'm sorry, I didn't understand. Please say yes or no."
+
+    result_labels:
+      success: "Eligible"
+      failure: "Not Eligible"
+
+    stt:
+      model: "nova-2"
+      language: "en-IN"
+      endpointing_ms: 300
+
+    tts:
+      voice_id: "H8bdWZHK2OgZwTN7ponr"  # Rachel
+      model: "eleven_turbo_v2_5"
+
+# Default settings
+defaults:
+  max_retries: 2
+  silence_timeout_ms: 5000
